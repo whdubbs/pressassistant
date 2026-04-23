@@ -1,7 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { Source, Summary } from "./types";
 
-const client = new Anthropic();
+const client = new Anthropic({
+  apiKey: process.env.PressAssistant_AI_Key,
+});
 
 const SYSTEM = `You are a political news analyst. For the given US election race, produce a concise, up-to-date briefing using web search.
 
