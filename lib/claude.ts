@@ -40,7 +40,7 @@ Write in markdown with exactly these three sections, in this order:
 Rules:
 - Professional, neutral tone. No hype, no filler phrases ("it's worth noting", "in a surprising move").
 - Every factual claim in the two "What's changed" sections must have an inline source link. If you can't source it, don't include it.
-- Prefer primary sources (campaign filings, official statements, reputable local papers and wires) over aggregators.
+- Prefer reputable political/news sources: The Hill, Axios, Semafor, Punchbowl, Roll Call, NBC News, CBS News, ABC News, NPR, PBS, Bloomberg, Washington Post, CNN, Ballotpedia, FEC.gov, major state/local papers, Cook Political Report, RealClearPolitics, FiveThirtyEight. Avoid partisan blogs and unknown aggregators.
 - Today's date is ${new Date().toISOString().slice(0, 10)}. Use it to judge what counts as "past day" vs "past week".
 - Do not invent URLs. If web search didn't surface a link, drop the bullet.`;
 
@@ -71,34 +71,6 @@ export async function fetchRaceSummary(
           type: "web_search_20260209",
           name: "web_search",
           max_uses: 10,
-          allowed_domains: [
-            "politico.com",
-            "thehill.com",
-            "axios.com",
-            "semafor.com",
-            "punchbowl.news",
-            "rollcall.com",
-            "realclearpolitics.com",
-            "cookpolitical.com",
-            "fivethirtyeight.com",
-            "ballotpedia.org",
-            "nytimes.com",
-            "washingtonpost.com",
-            "wsj.com",
-            "reuters.com",
-            "apnews.com",
-            "bloomberg.com",
-            "nbcnews.com",
-            "cnn.com",
-            "cbsnews.com",
-            "abcnews.go.com",
-            "npr.org",
-            "pbs.org",
-            "theatlantic.com",
-            "newyorker.com",
-            "vox.com",
-            "fec.gov",
-          ],
         } as unknown as Anthropic.Messages.Tool,
       ],
       messages: [
