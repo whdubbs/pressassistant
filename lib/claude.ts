@@ -62,15 +62,14 @@ export async function fetchRaceSummary(
   }
   try {
     const response = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 4096,
-      thinking: { type: "adaptive" },
+      model: "claude-haiku-4-5",
+      max_tokens: 3000,
       system: SYSTEM,
       tools: [
         {
           type: "web_search_20260209",
           name: "web_search",
-          max_uses: 10,
+          max_uses: 6,
           blocked_domains: [
             "nytimes.com",
             "washingtonpost.com",
