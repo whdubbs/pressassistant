@@ -1,0 +1,75 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0b0d10;
+  color: #e8eaed;
+  line-height: 1.5;
+}
+a { color: #78b3ff; }
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #2a2f36;
+  background: #1a1d21;
+  color: #e8eaed;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+button:hover { background: #23272d; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.primary { background: #2563eb; border-color: #2563eb; }
+button.primary:hover { background: #1d4fd8; }
+button.danger { color: #ef6b6b; }
+input {
+  font: inherit;
+  background: #13161a;
+  border: 1px solid #2a2f36;
+  color: #e8eaed;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 100%;
+}
+input:focus { outline: none; border-color: #2563eb; }
+.container { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+h1 { font-size: 28px; margin: 0 0 4px; }
+.sub { color: #8a9099; margin: 0 0 24px; }
+.add-row { display: flex; gap: 8px; margin-bottom: 24px; }
+.race {
+  border: 1px solid #23272d;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: #101317;
+}
+.race-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.race-head h2 { font-size: 18px; margin: 0; }
+.meta { font-size: 12px; color: #8a9099; }
+.actions { display: flex; gap: 6px; }
+.content {
+  white-space: pre-wrap;
+  font-size: 14px;
+  margin-top: 12px;
+  color: #c9ccd1;
+}
+.content strong { color: #e8eaed; }
+.sources {
+  margin-top: 14px;
+  font-size: 13px;
+  border-top: 1px solid #23272d;
+  padding-top: 10px;
+}
+.sources ol { margin: 6px 0 0; padding-left: 20px; }
+.sources li { margin-bottom: 3px; word-break: break-all; }
+.error { color: #ef6b6b; font-size: 13px; margin-top: 8px; }
+.empty { color: #8a9099; font-size: 14px; text-align: center; padding: 40px 0; }
+.login { max-width: 360px; margin: 80px auto; }
+.login h1 { margin-bottom: 20px; }
+.login form { display: flex; flex-direction: column; gap: 12px; }
