@@ -62,7 +62,7 @@ export async function fetchRaceSummary(
   }
   try {
     const response = await client.messages.create({
-      model: "claude-opus-4-7",
+      model: "claude-sonnet-4-6",
       max_tokens: 4096,
       thinking: { type: "adaptive" },
       system: SYSTEM,
@@ -70,7 +70,7 @@ export async function fetchRaceSummary(
         {
           type: "web_search_20260209",
           name: "web_search",
-          max_uses: 8,
+          max_uses: 5,
         } as unknown as Anthropic.Messages.Tool,
       ],
       messages: [
