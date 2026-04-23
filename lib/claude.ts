@@ -1,9 +1,26 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { Source, Summary } from "./types";
 
-const client = new Anthropic({
-  apiKey: process.env.PressAssistant_AI_Key,
-});
+function resolveApiKey(): string | undefined {
+  const env = process.env as Record<string, string | undefined>;
+  const candidates = [
+    "PressAssistant_AI_Key",
+    "PRESSASSISTANT_AI_KEY",
+    "pressassistant_ai_key",
+    "ANTHROPIC_API_KEY",
+  ];
+  for (const name of candidates) {
+    if (env[name]) return env[name];
+  }
+  // last-ditch: any env var with "pressassistant" in the name (case-insensitive)
+  for (const [k, v] of Object.entries(env)) {
+    if (/pressassistant/i.test(k) && v) return v;
+  }
+  return undefined;
+}
+
+const apiKey = resolveApiKey();
+const client = new Anthropic({ apiKey });
 
 const SYSTEM = `You are a political news analyst. For the given US election race, produce a concise, up-to-date briefing using web search.
 
@@ -19,6 +36,18 @@ export async function fetchRaceSummary(
   raceId: string,
   label: string,
 ): Promise<Summary> {
+  if (!apiKey) {
+    const visible = Object.keys(process.env)
+      .filter((k) => /press|anthropic|ai_key/i.test(k))
+      .join(", ") || "(none found)";
+    return {
+      raceId,
+      updatedAt: Date.now(),
+      content: "",
+      sources: [],
+      error: `API key not found in env. Matching var names visible to server: ${visible}`,
+    };
+  }
   try {
     const response = await client.messages.create({
       model: "claude-opus-4-7",
