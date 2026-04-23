@@ -69,17 +69,15 @@ export default function Dashboard({ initialRaces, initialSummaries }: Props) {
 
   return (
     <div className="container">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-        }}
-      >
+      <div className="header-row">
         <div>
-          <h1>Race Tracker</h1>
+          <div className="brand">
+            <span className="brand-dot" />
+            <span className="brand-label">Race Tracker</span>
+          </div>
+          <h1>Your races, briefed daily.</h1>
           <p className="sub">
-            Daily briefings on the political races you care about.
+            AI-generated intel on the political races you care about.
           </p>
         </div>
         <button onClick={logout}>Sign out</button>
@@ -177,5 +175,8 @@ function renderMd(text: string): string {
     )
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/^### (.+)$/gm, "<h4>$1</h4>")
+    .replace(/^## (.+)$/gm, "<h3>$1</h3>")
+    .replace(/^# (.+)$/gm, "<h2>$1</h2>")
     .replace(/^- (.+)$/gm, "• $1");
 }

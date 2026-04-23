@@ -26,7 +26,12 @@ export default function LoginForm() {
 
   return (
     <div className="container login">
-      <h1>Race Tracker</h1>
+      <div className="brand">
+        <span className="brand-dot" />
+        <span className="brand-label">Race Tracker</span>
+      </div>
+      <h1>Welcome back.</h1>
+      <p className="sub">Sign in to view your daily race briefings.</p>
       <form onSubmit={submit}>
         <input
           type="password"
